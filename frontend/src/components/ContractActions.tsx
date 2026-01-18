@@ -1,7 +1,7 @@
 import React from 'react';
 import { Contract } from '../types';
 import { contractAPI } from '../services/api';
-import { Trash2, Check } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 
 interface ContractActionsProps {
   contract: Contract;
@@ -35,9 +35,7 @@ export const ContractActions: React.FC<ContractActionsProps> = ({
   };
 
   const handleDelete = async () => {
-    if (!window.confirm('Are you sure you want to delete this contract?')) {
-      return;
-    }
+    if (!window.confirm('Delete this contract?')) return;
 
     setLoading(true);
     setError(null);
@@ -60,7 +58,6 @@ export const ContractActions: React.FC<ContractActionsProps> = ({
   return (
     <div className="flex gap-2">
       {error && <span className="text-red-500 text-sm">{error}</span>}
-      
       {statuses
         .filter((s) => s !== contract.status)
         .map((status) => (
@@ -73,7 +70,6 @@ export const ContractActions: React.FC<ContractActionsProps> = ({
             {status}
           </button>
         ))}
-      
       <button
         onClick={handleDelete}
         disabled={loading}

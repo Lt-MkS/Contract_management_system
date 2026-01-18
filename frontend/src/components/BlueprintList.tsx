@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Blueprint } from '../types';
 import { blueprintAPI } from '../services/api';
 import { Trash2 } from 'lucide-react';
@@ -13,9 +13,7 @@ export const BlueprintList: React.FC<BlueprintListProps> = ({ blueprints, onBlue
   const [error, setError] = useState<string | null>(null);
 
   const handleDelete = async (id: string) => {
-    if (!window.confirm('Are you sure you want to delete this blueprint?')) {
-      return;
-    }
+    if (!window.confirm('Delete this blueprint?')) return;
 
     setLoading(true);
     setError(null);
@@ -40,7 +38,6 @@ export const BlueprintList: React.FC<BlueprintListProps> = ({ blueprints, onBlue
   return (
     <div className="bg-white rounded-lg shadow overflow-hidden">
       <h2 className="text-2xl font-bold p-6 border-b">Blueprints</h2>
-      
       {error && <div className="text-red-500 p-4">{error}</div>}
 
       <div className="overflow-x-auto">

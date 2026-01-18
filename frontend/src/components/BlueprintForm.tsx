@@ -44,7 +44,6 @@ export const BlueprintForm: React.FC<BlueprintFormProps> = ({ onBlueprintCreated
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow">
       <h2 className="text-2xl font-bold mb-4">Create New Blueprint</h2>
-      
       {error && <div className="text-red-500 mb-4">{error}</div>}
 
       <div className="mb-4">

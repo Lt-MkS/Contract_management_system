@@ -19,7 +19,6 @@ export const Dashboard: React.FC = () => {
   const loadData = async () => {
     setLoading(true);
     setError(null);
-
     try {
       const [blueprintsData, contractsData] = await Promise.all([
         blueprintAPI.getAll(),
@@ -48,9 +47,7 @@ export const Dashboard: React.FC = () => {
   };
 
   const handleContractStatusChanged = (contract: Contract) => {
-    setContracts(
-      contracts.map((c) => (c.id === contract.id ? contract : c))
-    );
+    setContracts(contracts.map((c) => (c.id === contract.id ? contract : c)));
   };
 
   const handleContractDeleted = (id: string) => {
@@ -65,9 +62,7 @@ export const Dashboard: React.FC = () => {
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto py-6 px-4">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Contract Management Platform
-          </h1>
+          <h1 className="text-3xl font-bold text-gray-900">Contract Management Platform</h1>
         </div>
       </header>
 
@@ -80,14 +75,11 @@ export const Dashboard: React.FC = () => {
       <main className="max-w-7xl mx-auto py-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <BlueprintForm onBlueprintCreated={handleBlueprintCreated} />
-          <ContractForm onContractCreated={handleContractCreated} />
+          <ContractForm blueprints={blueprints} onContractCreated={handleContractCreated} />
         </div>
 
         <div className="mb-8">
-          <BlueprintList
-            blueprints={blueprints}
-            onBlueprintDeleted={handleBlueprintDeleted}
-          />
+          <BlueprintList blueprints={blueprints} onBlueprintDeleted={handleBlueprintDeleted} />
         </div>
 
         {contracts.length > 0 && (

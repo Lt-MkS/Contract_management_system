@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Contract, Blueprint } from '../types';
-import { contractAPI, blueprintAPI } from '../services/api';
+import { contractAPI } from '../services/api';
 
 interface ContractFormProps {
+  blueprints: Blueprint[];
   onContractCreated?: (contract: Contract) => void;
 }
 
-export const ContractForm: React.FC<ContractFormProps> = ({ onContractCreated }) => {
-  const [blueprints, setBlueprints] = useState<Blueprint[]>([]);
+export const ContractForm: React.FC<ContractFormProps> = ({ blueprints, onContractCreated }) => {
   const [blueprintId, setBlueprintId] = useState('');
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState<Contract['status']>('draft');
@@ -15,18 +15,10 @@ export const ContractForm: React.FC<ContractFormProps> = ({ onContractCreated })
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadBlueprints = async () => {
-      try {
-        const data = await blueprintAPI.getAll();
-        setBlueprints(data);
-      } catch (err) {
-        setError('Failed to load blueprints');
-        console.error(err);
-      }
-    };
-
-    loadBlueprints();
-  }, []);
+    if (blueprints.length > 0 && !blueprintId) {
+      setBlueprintId(blueprints[0].id);
+    }
+  }, [blueprints]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +27,7 @@ export const ContractForm: React.FC<ContractFormProps> = ({ onContractCreated })
 
     try {
       const contract = await contractAPI.create({
-        blueprint_id: blueprintId,
+        blueprintId: blueprintId,
         title,
         status,
       });
@@ -58,7 +50,6 @@ export const ContractForm: React.FC<ContractFormProps> = ({ onContractCreated })
   return (
     <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow">
       <h2 className="text-2xl font-bold mb-4">Create New Contract</h2>
-
       {error && <div className="text-red-500 mb-4">{error}</div>}
 
       <div className="mb-4">
