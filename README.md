@@ -1,28 +1,28 @@
 Contract Management Platform
 
-This is a full-stack web application that helps organizations create, manage, and track contracts throughout their entire lifecycle — from drafting to final completion. The system is built to be clean, fast, and practical, focusing on real-world contract workflows rather than just CRUD operations.
+This is a full-stack web application that helps organizations create, manage, and track contracts throughout their entire lifecycle — from drafting to final completion. The focus is on building a clean, fast, and practical system that reflects real-world contract workflows, not just basic CRUD operations.
 
 What does this project do?
 
 With this platform, a user can:
 
-Create contract blueprints (templates with predefined terms)
+Create contract blueprints (reusable templates with predefined terms)
 
 Generate contracts from those blueprints
 
-Move contracts through different stages like
+Move contracts through different stages such as:
 Draft → Pending → Active → Completed / Cancelled
 
-Update status in real time without refreshing the page
+Update contract status in real time without refreshing the page
 
-Manage and delete contracts and templates easily
+Manage and delete both contracts and templates easily
 
-In short: it simulates how contracts are actually handled in companies.
+In short, it simulates how contracts are actually handled inside companies and legal teams.
 
 Tech Stack
 Backend
 
-Node.js + Express (REST API)
+Node.js + Express (RESTful API)
 
 PostgreSQL (relational database)
 
@@ -32,14 +32,14 @@ Frontend
 
 React + TypeScript
 
-Vite (fast dev server)
+Vite (fast development server)
 
 Tailwind CSS (modern UI styling)
 
 Axios (API communication)
 
 How to Run the Project
-Easiest Way (Docker)
+Easiest Way (Using Docker)
 git clone <repo-url>
 cd contract-management-platform
 docker-compose up -d
@@ -49,38 +49,34 @@ Open:
 
 Frontend: http://localhost:5173
 
-Backend: http://localhost:5000/api
+Backend API: http://localhost:5000/api
 
 Manual Setup (Without Docker)
-
-Create database:
-
+Create Database
 CREATE DATABASE contract_db;
 
-
-Backend:
-
+Backend
 cd backend
 npm install
 npm run init-db
 npm run dev
 
-
-Frontend:
-
+Frontend
 cd frontend
 npm install
 npm run dev
 
-How the System Works (Flow)
+How the System Works
+1. Blueprints
 
-Blueprints
-You first define reusable contract templates (NDA, Service Agreement, etc.)
+You first define reusable contract templates such as NDAs or service agreements.
 
-Contracts
-You create actual contracts from those templates.
+2. Contracts
 
-Lifecycle Tracking
+Actual contracts are generated from these blueprints.
+
+3. Lifecycle Tracking
+
 Each contract moves through stages like:
 
 Draft
@@ -91,12 +87,13 @@ Active
 
 Completed / Cancelled
 
-Real-time UI
-Status changes and updates appear instantly.
+4. Real-time Interface
+
+Status changes and updates are reflected instantly in the UI.
 
 Key Features
 
-Clean separation of frontend & backend
+Clean separation between frontend and backend
 
 UUID-based database design
 
@@ -104,26 +101,8 @@ Foreign key relations with cascade delete
 
 Real-time status updates
 
-RESTful APIs
+Well-structured REST APIs
 
-Proper validation & error handling
+Proper validation and error handling
 
-Dockerized for easy setup
-
-Why this project is valuable for interviews
-
-This project shows:
-
-End-to-end system design
-
-Real business workflow modeling
-
-REST API design
-
-Database schema design
-
-Frontend-backend integration
-
-Production-ready folder structure
-
-It is not just a demo app — it mirrors how contract systems work in real SaaS products.
+Fully Dockerized setup
