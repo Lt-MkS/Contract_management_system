@@ -27,7 +27,7 @@ export const ContractForm: React.FC<ContractFormProps> = ({ blueprints, onContra
 
     try {
       const contract = await contractAPI.create({
-        blueprintId: blueprintId,
+        blueprint_id: blueprintId,
         title,
         status,
       });
