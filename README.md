@@ -2,9 +2,10 @@
 
 A full-stack web application designed to help organizations create, manage, and track contracts throughout their entire lifecycle — from drafting to final completion.  
 The system is built to be clean, fast, and practical, reflecting real-world legal and business workflows rather than just basic CRUD operations.
+Whatever was written in email, it has been taken care of. The project works great and is available on vercese;
 
 ---
-
+# Ver
 ## 🚀 What Does This Project Do?
 
 This platform allows users to:
